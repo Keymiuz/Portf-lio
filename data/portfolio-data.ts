@@ -40,7 +40,7 @@ export type ProjectItem = {
 export const skillGroups: SkillGroup[] = [
   {
     title: 'Stack principal',
-    items: ['Java', 'Node.js', 'Angular', 'Spring Boot', 'C/C++', 'JavaScript', 'TypeScript', 'Python', 'SQL', 'C#', 'Shell']
+    items: ['Java', 'Node.js', 'Angular', 'Spring Boot', 'C/C++', 'JavaScript', 'TypeScript', 'Python', 'SQL', 'Shell']
   }
 ];
 
@@ -102,6 +102,10 @@ export const projects: ProjectItem[] = [
     summary: 'Participação em um projeto real publicado, com foco em entrega funcional e presença digital em produção.',
     stack: ['Projeto real', 'Front-end', 'Entrega em produção'],
     badge: 'projeto real',
+    image: {
+      src: '/projects/cedro-rosa.png',
+      alt: 'Página inicial do projeto Cedro Rosa'
+    },
     details: [
       'Projeto real publicado e acessível online.',
       'Entra no portfólio como prova concreta de entrega em ambiente de produção.',
@@ -115,10 +119,14 @@ export const projects: ProjectItem[] = [
     summary: 'Versão autoral do clássico com foco em gameplay, organização da lógica do jogo e experiência visual.',
     stack: ['Game Dev', 'Frontend', 'Lógica'],
     badge: 'portfolio',
+    image: {
+      src: '/projects/tetris.png',
+      alt: 'Tela do projeto Tetris desenvolvido para o portfólio'
+    },
     details: [
       'Projeto próprio voltado a gameplay, controle de estado e lapidação da experiência do usuário.',
       'Estrutura pensada para suportar demo integrada no próprio portfólio.',
-      'Pode funcionar como projeto jogável e vitrine técnica ao mesmo tempo.'
+      'Funciona como projeto jogável e vitrine técnica ao mesmo tempo.'
     ],
     links: [{ label: 'Jogar no site', href: '/projects/tetris', kind: 'demo' }]
   },
@@ -128,6 +136,10 @@ export const projects: ProjectItem[] = [
     summary: 'Plataforma de alertas com conta salva no navegador, monitoramento visual e catálogo mock integrado a vários sites.',
     stack: ['Monitoring', 'Automation', 'Alerts'],
     badge: 'portfolio',
+    image: {
+      src: '/projects/price-alert.png',
+      alt: 'Painel do Sistema de Alerta de Preço'
+    },
     details: [
       'Demo com criação de conta, persistência local e alertas personalizados por produto.',
       'Painel elegante para acompanhar preços de sites como Amazon, Google Shopping, Mercado Livre e KaBuM!.',
@@ -144,7 +156,7 @@ export const projects: ProjectItem[] = [
     details: [
       'Projeto focado em rastreio de notas fiscais e centralização de acompanhamento operacional.',
       'Envolve lógica de consulta, tratamento de dados e organização de informações para uso prático.',
-      'Não possui imagem no momento, mas a estrutura do modal já fica pronta para receber uma depois.'
+      'Estrutura pronta para receber visual ou integrações futuras sem alterar a proposta do card.'
     ],
     links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/Rastreador-de-NF', kind: 'github' }]
   },
