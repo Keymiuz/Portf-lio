@@ -193,7 +193,7 @@ export function TetrisGame() {
             <p className="text-[11px] uppercase tracking-[0.32em] text-cyan-300/70">Playable demo</p>
             <h1 className="mt-2 text-2xl font-semibold tracking-tight text-white md:text-3xl">Tetris</h1>
             <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-              Layout mais compacto, foco em teclado e visual mais contemporaneo. Hold em `C`, hard drop em `Espaco` e pausa em `P`.
+              Layout mais compacto, foco em teclado e visual mais contemporâneo. Hold em `C`, hard drop em `Espaço` e pausa em `P`.
             </p>
           </div>
 
@@ -202,7 +202,7 @@ export function TetrisGame() {
             className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-200 transition hover:border-white/20 hover:bg-white/10"
           >
             <ArrowLeft className="h-4 w-4" />
-            Voltar ao portfolio
+            Voltar ao portfólio
           </Link>
         </div>
 
@@ -276,7 +276,7 @@ export function TetrisGame() {
               <div>
                 <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Controles</p>
                 <p className="mt-2 leading-6 text-zinc-400">
-                  Setas ou `A/D/S`, `Espaco` para hard drop, `Z/Q` e `X` para girar, `C` para hold e `P` para pausar.
+                  Setas ou `A/D/S`, `Espaço` para hard drop, `Z/Q` e `X` para girar, `C` para hold e `P` para pausar.
                 </p>
               </div>
             </div>
@@ -313,7 +313,7 @@ export function TetrisGame() {
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-3 backdrop-blur-md">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Acoes</p>
+              <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Ações</p>
               <div className="mt-3 grid grid-cols-2 gap-2">
                 <ControlButton label="Esq." onClick={() => setGame((current) => moveHorizontally(current, -1))} icon={<ArrowLeft className="h-4 w-4" />} />
                 <ControlButton label="Dir." onClick={() => setGame((current) => moveHorizontally(current, 1))} icon={<ArrowRight className="h-4 w-4" />} />
@@ -339,18 +339,18 @@ export function TetrisGame() {
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-3 text-xs leading-5 text-zinc-400 backdrop-blur-md">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Pontuacao</p>
+              <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Pontuação</p>
               <ul className="mt-2 space-y-1">
-                <li>Single 100 x nivel</li>
-                <li>Double 300 x nivel</li>
-                <li>Triple 500 x nivel</li>
-                <li>Tetris 800 x nivel</li>
-                <li>T-Spin 400 x nivel</li>
-                <li>T-Spin Double 1200 x nivel</li>
-                <li>T-Spin Triple 1600 x nivel</li>
+                <li>Single 100 x nível</li>
+                <li>Double 300 x nível</li>
+                <li>Triple 500 x nível</li>
+                <li>Tetris 800 x nível</li>
+                <li>T-Spin 400 x nível</li>
+                <li>T-Spin Double 1200 x nível</li>
+                <li>T-Spin Triple 1600 x nível</li>
                 <li>Soft drop +1 por linha</li>
                 <li>Hard drop +2 por linha</li>
-                <li>All Clear +2000 x nivel</li>
+                <li>All Clear +2000 x nível</li>
                 <li>B2B x1.5</li>
               </ul>
             </div>

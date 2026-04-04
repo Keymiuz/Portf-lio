@@ -6,8 +6,8 @@ import { BriefcaseBusiness, ChevronDown, GraduationCap } from 'lucide-react';
 import { timelineEntries, type TimelineKind } from '@/data/portfolio-data';
 
 const kindConfig: Record<TimelineKind, { label: string; icon: React.ComponentType<{ className?: string }> }> = {
-  experience: { label: 'Experiencia', icon: BriefcaseBusiness },
-  education: { label: 'Formacao', icon: GraduationCap }
+  experience: { label: 'Experiência', icon: BriefcaseBusiness },
+  education: { label: 'Formação', icon: GraduationCap }
 };
 
 export function Timeline() {
@@ -18,7 +18,7 @@ export function Timeline() {
       <div>
         <h2 className="text-2xl font-semibold text-white">Timeline</h2>
         <p className="text-sm text-zinc-400">
-          Formacao primeiro, depois experiencia profissional, com uma linha central e detalhes expansivos em cada etapa.
+          Formação primeiro, depois experiência profissional, com uma linha central e detalhes expansivos em cada etapa.
         </p>
       </div>
 
