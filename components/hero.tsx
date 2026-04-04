@@ -1,8 +1,8 @@
 import { Download, Github, Linkedin } from 'lucide-react';
 
 const socialLinks = [
-  { href: '#', label: 'LinkedIn', icon: Linkedin },
-  { href: '#', label: 'GitHub', icon: Github }
+  { href: 'https://www.linkedin.com/in/keymius/', label: 'LinkedIn', icon: Linkedin },
+  { href: 'https://github.com/Keymiuz', label: 'GitHub', icon: Github }
 ];
 
 export function Hero() {
@@ -11,10 +11,11 @@ export function Hero() {
       <div className="grid-overlay absolute inset-0 opacity-40" />
       <div className="relative flex flex-col gap-6">
         <p className="text-sm uppercase tracking-[0.3em] text-zinc-400">Software Portfolio</p>
-        <h1 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">João Pedro</h1>
+        <h1 className="text-4xl font-semibold tracking-tight text-white md:text-6xl">{'Jo\u00e3o Pedro'}</h1>
         <p className="max-w-2xl text-xl text-zinc-200 md:text-2xl">Software Engineer</p>
         <p className="max-w-2xl text-zinc-400">
-          Transformando ideias em soluções digitais eficientes, escaláveis e visualmente impactantes.
+          {'Engenheiro de software com foco em interfaces modernas, experi\u00eancias perform\u00e1ticas e solu\u00e7\u00f5es digitais '}
+          {'constru\u00eddas com clareza, escalabilidade e aten\u00e7\u00e3o aos detalhes.'}
         </p>
 
         <div className="flex flex-wrap items-center gap-3">
@@ -24,6 +25,8 @@ export function Hero() {
               href={href}
               className="group inline-flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-300 transition duration-300 hover:border-red-600 hover:text-red-500 hover:shadow-glow"
               aria-label={label}
+              target="_blank"
+              rel="noreferrer"
             >
               <Icon className="h-4 w-4 transition-colors group-hover:text-red-500" />
               {label}
@@ -31,11 +34,12 @@ export function Hero() {
           ))}
 
           <a
-            href="#"
+            href="/CV.pdf"
+            download="Joao-Pedro-CV.pdf"
             className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 text-sm font-medium text-white transition duration-300 hover:bg-red-500 hover:shadow-glow"
           >
             <Download className="h-4 w-4" />
-            Baixar Currículo
+            {'Baixar Curr\u00edculo'}
           </a>
         </div>
       </div>
