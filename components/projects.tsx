@@ -10,7 +10,7 @@ function DifficultyBar({ level }: { level: ProjectItem['difficulty'] }) {
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-        <span>Nivel de dificuldade</span>
+        <span>Nível de dificuldade</span>
         <span>{level}/5</span>
       </div>
 
@@ -50,7 +50,7 @@ export function Projects() {
         <div>
           <h2 className="text-2xl font-semibold text-white">Projetos</h2>
           <p className="text-sm text-zinc-400">
-            Cada projeto agora traz contexto, nivel estimado de dificuldade e links separados entre repositorio, site real e futura demo.
+            Cada projeto agora traz contexto, nível estimado de dificuldade e links separados entre repositório, site real e demo.
           </p>
         </div>
 
