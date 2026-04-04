@@ -28,7 +28,6 @@ export type ProjectItem = {
   title: string;
   summary: string;
   stack: string[];
-  difficulty: 1 | 2 | 3 | 4 | 5;
   badge: 'portfolio' | 'projeto real';
   image?: {
     src: string;
@@ -38,28 +37,10 @@ export type ProjectItem = {
   links: ProjectLink[];
 };
 
-const githubProfile = 'https://github.com/Keymiuz';
-
 export const skillGroups: SkillGroup[] = [
   {
-    title: 'Front-end',
-    items: ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Angular', 'Bootstrap', 'Tailwind CSS']
-  },
-  {
-    title: 'Back-end e Mobile',
-    items: ['Spring Boot', 'Spring Data JPA', 'Node.js', '.NET', 'Java', 'Python', 'C#', 'React Native', 'Flutter']
-  },
-  {
-    title: 'Banco de Dados',
-    items: ['SQL', 'MySQL', 'PostgreSQL', 'Oracle SQL (PL/SQL)', 'MongoDB']
-  },
-  {
-    title: 'Infra e Ferramentas',
-    items: ['Shell', 'C/C++', 'Docker', 'Git', 'GitHub', 'Maven', 'AWS', 'Oracle', 'Power BI', 'Power Platform']
-  },
-  {
-    title: 'Metodologias',
-    items: ['Cibersegurança', 'Agile', 'CI/CD', 'DevOps']
+    title: 'Stack principal',
+    items: ['Java', 'Node.js', 'Angular', 'Spring Boot', 'C/C++', 'JavaScript', 'TypeScript', 'Python', 'SQL', 'C#', 'Shell']
   }
 ];
 
@@ -120,7 +101,6 @@ export const projects: ProjectItem[] = [
     title: 'Desenvolvedor para Cedro Rosa',
     summary: 'Participação em um projeto real publicado, com foco em entrega funcional e presença digital em produção.',
     stack: ['Projeto real', 'Front-end', 'Entrega em produção'],
-    difficulty: 2,
     badge: 'projeto real',
     details: [
       'Projeto real publicado e acessível online.',
@@ -134,7 +114,6 @@ export const projects: ProjectItem[] = [
     title: 'Tetris',
     summary: 'Versão autoral do clássico com foco em gameplay, organização da lógica do jogo e experiência visual.',
     stack: ['Game Dev', 'Frontend', 'Lógica'],
-    difficulty: 3,
     badge: 'portfolio',
     details: [
       'Projeto próprio voltado a gameplay, controle de estado e lapidação da experiência do usuário.',
@@ -148,7 +127,6 @@ export const projects: ProjectItem[] = [
     title: 'Sistema de Alerta de Preço',
     summary: 'Plataforma de alertas com conta salva no navegador, monitoramento visual e catálogo mock integrado a vários sites.',
     stack: ['Monitoring', 'Automation', 'Alerts'],
-    difficulty: 3,
     badge: 'portfolio',
     details: [
       'Demo com criação de conta, persistência local e alertas personalizados por produto.',
@@ -162,7 +140,6 @@ export const projects: ProjectItem[] = [
     title: 'Rastreador de NF',
     summary: 'Ferramenta voltada ao acompanhamento e organização de notas fiscais, com fluxo orientado à automação.',
     stack: ['Automation', 'Tracking', 'Back-end'],
-    difficulty: 4,
     badge: 'portfolio',
     details: [
       'Projeto focado em rastreio de notas fiscais e centralização de acompanhamento operacional.',
@@ -176,7 +153,6 @@ export const projects: ProjectItem[] = [
     title: 'Automatizador de Flappy Bird',
     summary: 'Experimento em que o jogo aprende a se jogar sozinho com rede neural NEAT e evolução de gerações.',
     stack: ['Python', 'NEAT', 'Neural Networks'],
-    difficulty: 4,
     badge: 'portfolio',
     image: {
       src: '/projects/flappy-bird-neat.jpg',
@@ -194,7 +170,6 @@ export const projects: ProjectItem[] = [
     title: 'Ray Tracer em C',
     summary: 'Projeto de computação gráfica para estudo de iluminação, materiais, câmera e renderização em baixo nível.',
     stack: ['C', 'Computer Graphics', 'Rendering'],
-    difficulty: 5,
     badge: 'portfolio',
     image: {
       src: '/projects/ray-tracer.jpg',

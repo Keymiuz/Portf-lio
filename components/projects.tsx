@@ -6,29 +6,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ExternalLink, Github, SlidersHorizontal, X } from 'lucide-react';
 import { projects, type ProjectItem, type ProjectLink } from '@/data/portfolio-data';
 
-function DifficultyBar({ level }: { level: ProjectItem['difficulty'] }) {
-  return (
-    <div className="space-y-2">
-      <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.2em] text-zinc-500">
-        <span>Nível de dificuldade</span>
-        <span>{level}/5</span>
-      </div>
-
-      <div className="flex gap-2">
-        {Array.from({ length: 5 }, (_, index) => {
-          const active = index < level;
-          return (
-            <span
-              key={index}
-              className={`h-2 flex-1 rounded-full transition-colors ${active ? 'bg-red-500' : 'bg-zinc-800'}`}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
 function getLinkIcon(kind: ProjectLink['kind']) {
   return kind === 'github' ? Github : ExternalLink;
 }
@@ -49,98 +26,106 @@ export function Projects() {
       <section id="projects" className="space-y-6">
         <div>
           <h2 className="text-2xl font-semibold text-white">Projetos</h2>
-          <p className="text-sm text-zinc-400">
-            Cada projeto agora traz contexto, nível estimado de dificuldade e links separados entre repositório, site real e demo.
-          </p>
+          <p className="text-sm text-zinc-400">Projetos com contexto, stack, links e visual mais direto para leitura rápida.</p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {projects.map((project, index) => (
             <article
               key={project.id}
-              className="flex h-full flex-col rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 backdrop-blur-xl transition duration-300 hover:border-red-600/80"
+              className="flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/70 backdrop-blur-xl transition duration-300 hover:border-red-600/80"
             >
-              <div className="mb-4 flex items-start justify-between gap-4">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">Projeto {String(index + 1).padStart(2, '0')}</p>
-                  <h3 className="mt-2 text-xl font-semibold text-zinc-100">{project.title}</h3>
+              {project.image ? (
+                <div className="aspect-[16/9] overflow-hidden border-b border-zinc-800 bg-zinc-900/60">
+                  <Image
+                    src={project.image.src}
+                    alt={project.image.alt}
+                    width={1200}
+                    height={700}
+                    className="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
+                  />
+                </div>
+              ) : null}
+
+              <div className="flex h-full flex-col p-5">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">Projeto {String(index + 1).padStart(2, '0')}</p>
+                    <h3 className="mt-2 text-xl font-semibold text-zinc-100">{project.title}</h3>
+                  </div>
+
+                  {project.badge === 'projeto real' ? (
+                    <a
+                      href={project.links.find((link) => link.kind === 'live')?.href ?? '#'}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="rounded-full border border-red-600/40 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-red-400 transition hover:border-red-500 hover:bg-red-600/10"
+                    >
+                      {project.badge}
+                    </a>
+                  ) : (
+                    <span className="rounded-full border border-zinc-700 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-zinc-400">
+                      {project.badge}
+                    </span>
+                  )}
                 </div>
 
-                {project.badge === 'projeto real' ? (
-                  <a
-                    href={project.links.find((link) => link.kind === 'live')?.href ?? '#'}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-red-600/40 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-red-400 transition hover:border-red-500 hover:bg-red-600/10"
-                  >
-                    {project.badge}
-                  </a>
-                ) : (
-                  <span className="rounded-full border border-zinc-700 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-zinc-400">
-                    {project.badge}
-                  </span>
-                )}
-              </div>
+                <p className="text-sm leading-6 text-zinc-300">{project.summary}</p>
 
-              <p className="text-sm leading-6 text-zinc-300">{project.summary}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {project.stack.map((item) => (
+                    <span key={item} className="rounded-full border border-zinc-700 px-3 py-1 text-xs text-zinc-300">
+                      {item}
+                    </span>
+                  ))}
+                </div>
 
-              <div className="mt-4">
-                <DifficultyBar level={project.difficulty} />
-              </div>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {project.links.map((link) => {
+                    const Icon = getLinkIcon(link.kind);
+                    const disabled = isDisabledDemo(link);
 
-              <div className="mt-4 flex flex-wrap gap-2">
-                {project.stack.map((item) => (
-                  <span key={item} className="rounded-full border border-zinc-700 px-3 py-1 text-xs text-zinc-300">
-                    {item}
-                  </span>
-                ))}
-              </div>
+                    if (disabled) {
+                      return (
+                        <button
+                          key={link.label}
+                          type="button"
+                          disabled
+                          className="inline-flex cursor-not-allowed items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-500"
+                        >
+                          <Icon className="h-4 w-4" />
+                          {link.label}
+                        </button>
+                      );
+                    }
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                {project.links.map((link) => {
-                  const Icon = getLinkIcon(link.kind);
-                  const disabled = isDisabledDemo(link);
-
-                  if (disabled) {
                     return (
-                      <button
+                      <a
                         key={link.label}
-                        type="button"
-                        disabled
-                        className="inline-flex cursor-not-allowed items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-500"
+                        href={link.href}
+                        target={isExternalLink(link.href) ? '_blank' : undefined}
+                        rel={isExternalLink(link.href) ? 'noreferrer' : undefined}
+                        className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm transition ${
+                          link.kind === 'github'
+                            ? 'border border-zinc-700 bg-zinc-900/70 text-zinc-100 hover:border-red-600 hover:text-red-400'
+                            : 'bg-red-600 font-medium text-white hover:bg-red-500'
+                        }`}
                       >
                         <Icon className="h-4 w-4" />
                         {link.label}
-                      </button>
+                      </a>
                     );
-                  }
+                  })}
 
-                  return (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target={isExternalLink(link.href) ? '_blank' : undefined}
-                      rel={isExternalLink(link.href) ? 'noreferrer' : undefined}
-                      className={`inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm transition ${
-                        link.kind === 'github'
-                          ? 'border border-zinc-700 bg-zinc-900/70 text-zinc-100 hover:border-red-600 hover:text-red-400'
-                          : 'bg-red-600 font-medium text-white hover:bg-red-500'
-                      }`}
-                    >
-                      <Icon className="h-4 w-4" />
-                      {link.label}
-                    </a>
-                  );
-                })}
-
-                <button
-                  type="button"
-                  onClick={() => setSelectedProject(project)}
-                  className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-100 transition hover:border-red-600 hover:text-red-400"
-                >
-                  <SlidersHorizontal className="h-4 w-4" />
-                  Saber mais
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
+                    className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-100 transition hover:border-red-600 hover:text-red-400"
+                  >
+                    <SlidersHorizontal className="h-4 w-4" />
+                    Saber mais
+                  </button>
+                </div>
               </div>
             </article>
           ))}
@@ -206,10 +191,6 @@ export function Projects() {
                 </div>
 
                 <div className="space-y-5">
-                  <div className="rounded-2xl border border-zinc-800 bg-zinc-900/55 p-4">
-                    <DifficultyBar level={selectedProject.difficulty} />
-                  </div>
-
                   <div className="rounded-2xl border border-zinc-800 bg-zinc-900/55 p-4">
                     <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Stack</p>
                     <div className="mt-3 flex flex-wrap gap-2">
