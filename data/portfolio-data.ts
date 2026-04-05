@@ -54,12 +54,12 @@ export const timelineEntries: TimelineEntry[] = [
     title: 'Análise e Desenvolvimento de Sistemas',
     organization: 'Centro Universitário Paulistano',
     location: 'São Paulo, Brasil',
-    summary: 'Formação superior focada em base computacional, desenvolvimento de software e resolução estruturada de problemas.',
+    summary: 'Graduação orientada a desenvolvimento de software, fundamentos de computação e resolução estruturada de problemas.',
     tags: ['Java', 'POO', 'Estruturas de Dados', 'SQL'],
     bullets: [
       'Formação superior em Análise e Desenvolvimento de Sistemas.',
       'Base acadêmica em programação orientada a objetos, estruturas de dados, banco de dados e arquitetura de software.',
-      'Jornada conectada a projetos práticos e fundamentos de engenharia de produto.'
+      'Contato contínuo com projetos práticos e fundamentos aplicados à engenharia de produto.'
     ]
   },
   {
@@ -69,7 +69,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: 'Desenvolvedor Front-End',
     organization: 'Music.go',
     location: 'Remoto / Freelancer',
-    summary: 'Atuação freelancer com foco em interfaces responsivas, animações e melhoria de performance no front-end da aplicação.',
+    summary: 'Atuação freelancer com foco em front-end responsivo, animações e melhoria de performance da aplicação.',
     tags: ['HTML', 'CSS', 'JavaScript', 'React', 'Git', 'GitHub', 'SOLID'],
     bullets: [
       'Desenvolvi animações e implementei o front-end da aplicação.',
@@ -85,7 +85,7 @@ export const timelineEntries: TimelineEntry[] = [
     title: 'Monitoria - Programação Orientada a Objetos (Java)',
     organization: 'Centro Universitário Paulistano',
     location: 'São Paulo, Brasil',
-    summary: 'Apoio acadêmico em Java para mais de 40 alunos, com foco em POO, exercícios práticos e melhoria de desempenho.',
+    summary: 'Apoio acadêmico em Java para mais de 40 alunos, com foco em POO, exercícios práticos e evolução de desempenho.',
     tags: ['Java', 'POO', 'Estruturas de Dados'],
     bullets: [
       'Apoio a mais de 40 alunos no aprendizado de POO em Java, contribuindo para uma melhora média de 15% nas notas finais.',
@@ -99,7 +99,7 @@ export const projects: ProjectItem[] = [
   {
     id: 'project-cedro-rosa',
     title: 'Desenvolvedor para Cedro Rosa',
-    summary: 'Participação em um projeto real publicado, com foco em entrega funcional e presença digital em produção.',
+    summary: 'Participação em projeto real publicado, com foco em entrega funcional, experiência digital e ambiente de produção.',
     stack: ['Projeto real', 'Front-end', 'Entrega em produção'],
     badge: 'projeto real',
     image: {
@@ -108,15 +108,15 @@ export const projects: ProjectItem[] = [
     },
     details: [
       'Projeto real publicado e acessível online.',
-      'Entra no portfólio como prova concreta de entrega em ambiente de produção.',
-      'Boa peça para equilibrar os projetos autorais com trabalho aplicado a um contexto real.'
+      'Incluído no portfólio como evidência concreta de entrega em ambiente de produção.',
+      'Demonstra capacidade de trabalhar em contexto aplicado, com foco em execução e consistência visual.'
     ],
     links: [{ label: 'Visitar site', href: 'https://cedrorosamusica.online/musicas/', kind: 'live' }]
   },
   {
     id: 'project-tetris',
     title: 'Tetris',
-    summary: 'Versão autoral do clássico com foco em gameplay, organização da lógica do jogo e experiência visual.',
+    summary: 'Versão autoral do clássico desenvolvida com foco em gameplay, organização de lógica e experiência visual.',
     stack: ['Game Dev', 'Frontend', 'Lógica'],
     badge: 'portfolio',
     image: {
@@ -124,16 +124,16 @@ export const projects: ProjectItem[] = [
       alt: 'Tela do projeto Tetris desenvolvido para o portfólio'
     },
     details: [
-      'Projeto próprio voltado a gameplay, controle de estado e lapidação da experiência do usuário.',
-      'Estrutura pensada para suportar demo integrada no próprio portfólio.',
-      'Funciona como projeto jogável e vitrine técnica ao mesmo tempo.'
+      'Projeto próprio voltado a gameplay, controle de estado e refinamento da experiência do usuário.',
+      'Estrutura pensada para suportar demonstração integrada no próprio portfólio.',
+      'Combina apelo visual, lógica de jogo e apresentação técnica em um projeto autoral.'
     ],
     links: [{ label: 'Jogar no site', href: '/projects/tetris', kind: 'demo' }]
   },
   {
     id: 'project-price-alert',
     title: 'Sistema de Alerta de Preço',
-    summary: 'Plataforma de alertas com conta salva no navegador, monitoramento visual e catálogo mock integrado a vários sites.',
+    summary: 'Plataforma de alertas com conta persistida no navegador, monitoramento visual e catálogo mock integrado a múltiplos sites.',
     stack: ['Monitoring', 'Automation', 'Alerts'],
     badge: 'portfolio',
     image: {
@@ -142,8 +142,8 @@ export const projects: ProjectItem[] = [
     },
     details: [
       'Demo com criação de conta, persistência local e alertas personalizados por produto.',
-      'Painel elegante para acompanhar preços de sites como Amazon, Google Shopping, Mercado Livre e KaBuM!.',
-      'Experiência visual pensada para parecer um produto real, mesmo usando dados mock nesta primeira versão.'
+      'Painel visual para acompanhar preços de sites como Amazon, Google Shopping, Mercado Livre e KaBuM!.',
+      'Projeto pensado para representar um produto digital com boa apresentação visual e estrutura funcional.'
     ],
     links: [{ label: 'Abrir demo', href: '/projects/price-alert', kind: 'demo' }]
   },
@@ -158,30 +158,30 @@ export const projects: ProjectItem[] = [
       alt: 'Interface do projeto API LOL Matchup Analyzer'
     },
     details: [
-      'Consulta a Riot API para localizar a conta, buscar partidas recentes e filtrar apenas matchups exatos na Top Lane.',
-      'Calcula winrate isolado do matchup, gold diff, cs diff e xp diff aos 10 e 15 minutos, risco de gank cedo e resumo de build, runas e combate.',
-      'A arquitetura atual separa backend em Node.js + Express e frontend em Angular, com cache em memória para acelerar consultas repetidas.',
-      'Projeto forte para mostrar integração com API externa, processamento de dados de partidas e tradução dessas métricas em uma interface útil.'
+      'Consulta a Riot API para localizar a conta, buscar partidas recentes e filtrar matchups exatos na Top Lane.',
+      'Calcula winrate do matchup, gold diff, cs diff e xp diff aos 10 e 15 minutos, além de risco de gank e resumo de build, runas e combate.',
+      'Arquitetura separada em backend Node.js + Express e frontend Angular, com cache em memória para acelerar consultas repetidas.',
+      'Projeto relevante para demonstrar integração com API externa, processamento de dados e transformação de métricas em produto utilizável.'
     ],
     links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/API-LOL', kind: 'github' }]
   },
   {
     id: 'project-rastreador-nf',
     title: 'Rastreador de NF',
-    summary: 'Ferramenta voltada ao acompanhamento e organização de notas fiscais, com fluxo orientado à automação.',
+    summary: 'Ferramenta voltada ao acompanhamento e à organização de notas fiscais, com fluxo orientado à automação.',
     stack: ['Automation', 'Tracking', 'Back-end'],
     badge: 'portfolio',
     details: [
       'Projeto focado em rastreio de notas fiscais e centralização de acompanhamento operacional.',
       'Envolve lógica de consulta, tratamento de dados e organização de informações para uso prático.',
-      'Estrutura pronta para receber visual ou integrações futuras sem alterar a proposta do card.'
+      'Estrutura pronta para evoluir com integrações e visual dedicado sem alterar a proposta funcional.'
     ],
     links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/Rastreador-de-NF', kind: 'github' }]
   },
   {
     id: 'project-flappy-bird-neat',
     title: 'Automatizador de Flappy Bird',
-    summary: 'Experimento em que o jogo aprende a se jogar sozinho com rede neural NEAT e evolução de gerações.',
+    summary: 'Experimento em que o jogo aprende a se jogar sozinho com rede neural NEAT e evolução por gerações.',
     stack: ['Python', 'NEAT', 'Neural Networks'],
     badge: 'portfolio',
     image: {
@@ -189,9 +189,9 @@ export const projects: ProjectItem[] = [
       alt: 'Treinamento do Flappy Bird com rede neural NEAT'
     },
     details: [
-      'Aplicação que combina jogo, algoritmo genético e rede neural NEAT para aprender a jogar automaticamente.',
+      'Aplicação que combina jogo, algoritmo genético e rede neural NEAT para aprendizado automático.',
       'Exige entendimento de fitness, gerações, ajuste de parâmetros e integração com a simulação do jogo.',
-      'Projeto forte para mostrar IA aplicada, experimentação e raciocínio evolutivo.'
+      'Projeto forte para evidenciar interesse por IA aplicada, experimentação e raciocínio evolutivo.'
     ],
     links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/ML-com-Flappy-Bird', kind: 'github' }]
   },
@@ -207,8 +207,8 @@ export const projects: ProjectItem[] = [
     },
     details: [
       'Implementação de ray tracing em C com foco em fundamentos de luz, sombra, reflexão e materiais.',
-      'Projeto mais técnico e matemático, exigindo bastante controle de memória, vetores e pipeline de renderização.',
-      'Bom destaque para computação gráfica e programação de baixo nível.'
+      'Projeto mais técnico e matemático, exigindo controle de memória, vetores e pipeline de renderização.',
+      'Destaque consistente para computação gráfica e programação de baixo nível.'
     ],
     links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/Ray-Tracing-in-C', kind: 'github' }]
   }

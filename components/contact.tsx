@@ -1,29 +1,39 @@
 'use client';
 
 import { useState } from 'react';
-import { Copy, Download, Github, Linkedin, Mail, Send } from 'lucide-react';
+import { Copy, Download, Github, Linkedin, Mail, MessageCircle, Send } from 'lucide-react';
 
 const email = 'jpcicolo@gmail.com';
+const whatsappNumber = '5511976468942';
+const whatsappHref = `https://wa.me/${whatsappNumber}`;
+const whatsappLabel = '(11) 97646-8942';
 
 const contactLinks = [
   {
+    href: whatsappHref,
+    label: 'Abrir WhatsApp',
+    description: `Canal rápido para conversas diretas sobre vagas, freelas e oportunidades no número ${whatsappLabel}.`,
+    icon: MessageCircle,
+    accent: 'from-emerald-500 to-lime-400'
+  },
+  {
     href: `mailto:${email}`,
     label: 'Enviar email',
-    description: 'Canal mais direto para propostas, vagas e freelas.',
+    description: 'Contato ideal para propostas, processos seletivos e conversas mais estruturadas.',
     icon: Mail,
     accent: 'from-red-600 to-orange-400'
   },
   {
     href: 'https://www.linkedin.com/in/keymius/',
     label: 'Abrir LinkedIn',
-    description: 'Perfil profissional com experiências, trajetória e networking.',
+    description: 'Perfil profissional com trajetória, experiências e posicionamento de carreira.',
     icon: Linkedin,
     accent: 'from-sky-500 to-cyan-400'
   },
   {
     href: 'https://github.com/Keymiuz',
     label: 'Abrir GitHub',
-    description: 'Repositórios públicos com projetos, estudos e aplicações autorais.',
+    description: 'Repositórios públicos com projetos, estudos e aplicações desenvolvidas por mim.',
     icon: Github,
     accent: 'from-zinc-200 to-zinc-500'
   }
@@ -53,20 +63,30 @@ export function Contact() {
         <div className="space-y-5">
           <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">Contato rápido</p>
           <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
-            Se a ideia é conversar sobre projeto, vaga ou freela, aqui ficou fácil.
+            Aberto a oportunidades, projetos e conversas com foco em resultado.
           </h2>
           <p className="max-w-2xl text-base leading-7 text-zinc-300">
-            Transformei o fim do portfólio em uma área de conversão de verdade: contato visível, currículo à mão e atalhos
-            rápidos para os canais mais relevantes.
+            Esta seção foi pensada para facilitar o contato com recrutadores, líderes técnicos e clientes. Escolha o canal
+            mais conveniente e seguimos a conversa por lá.
           </p>
 
           <div className="flex flex-wrap gap-3">
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-emerald-400"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Chamar no WhatsApp
+            </a>
+
             <a
               href={`mailto:${email}`}
               className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-red-500"
             >
               <Send className="h-4 w-4" />
-              Falar por email
+              Enviar email
             </a>
 
             <button

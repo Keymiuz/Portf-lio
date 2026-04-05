@@ -25,8 +25,10 @@ export function Projects() {
     <>
       <section id="projects" className="space-y-6">
         <div>
-          <h2 className="text-2xl font-semibold text-white">Projetos</h2>
-          <p className="text-sm text-zinc-400">Projetos com contexto, stack, links e visual mais direto para leitura rápida.</p>
+          <h2 className="text-2xl font-semibold text-white">Projetos em Destaque</h2>
+          <p className="text-sm text-zinc-400">
+            Seleção de projetos com contexto técnico, impacto prático e links para demonstração ou repositório.
+          </p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -123,7 +125,7 @@ export function Projects() {
                     className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-100 transition hover:border-red-600 hover:text-red-400"
                   >
                     <SlidersHorizontal className="h-4 w-4" />
-                    Saber mais
+                    Ver detalhes
                   </button>
                 </div>
               </div>

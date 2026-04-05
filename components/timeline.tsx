@@ -16,9 +16,9 @@ export function Timeline() {
   return (
     <section id="timeline" className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-white">Timeline</h2>
+        <h2 className="text-2xl font-semibold text-white">Formação & Experiência</h2>
         <p className="text-sm text-zinc-400">
-          Formação primeiro, depois experiência profissional, com uma linha central e detalhes expansivos em cada etapa.
+          Visão objetiva da minha trajetória acadêmica e profissional, com contexto, escopo e resultados relevantes.
         </p>
       </div>
 
@@ -81,7 +81,7 @@ export function Timeline() {
                   </div>
 
                   <p className="mt-4 text-xs uppercase tracking-[0.2em] text-zinc-500">
-                    {isOpen ? 'Clique para recolher' : 'Clique para expandir'}
+                    {isOpen ? 'Clique para recolher' : 'Clique para ver detalhes'}
                   </p>
 
                   <AnimatePresence initial={false}>

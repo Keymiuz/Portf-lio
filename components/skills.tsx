@@ -8,20 +8,23 @@ export function Skills() {
     <section className="space-y-4" id="skills">
       <div>
         <h2 className="text-2xl font-semibold text-white">Skills & Tech Stack</h2>
-        <p className="text-sm text-zinc-400">Resumo técnico mais compacto, com tudo reunido em uma única composição.</p>
+        <p className="text-sm text-zinc-400">
+          Stack principal e competências técnicas organizadas para leitura objetiva e avaliação rápida.
+        </p>
       </div>
 
       <div className="rounded-3xl border border-zinc-800/80 bg-zinc-950/65 p-5 backdrop-blur-xl md:p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">Core stack, backend, dados, infra e workflow</p>
+            <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">Stack principal</p>
             <p className="mt-2 max-w-3xl text-sm text-zinc-400">
-              Tecnologias, ferramentas e metodologias alinhadas ao seu currículo, em leitura única e direta.
+              Tecnologias alinhadas à minha atuação em desenvolvimento de software, back-end, front-end e construção de
+              aplicações escaláveis.
             </p>
           </div>
 
           <div className="rounded-full border border-red-600/30 bg-red-600/10 px-3 py-1 text-xs uppercase tracking-[0.22em] text-red-400">
-            {allSkills.length} skills
+            {allSkills.length} competências
           </div>
         </div>
 
