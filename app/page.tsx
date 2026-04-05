@@ -1,3 +1,4 @@
+import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
 import { Hero } from '@/components/hero';
 import { Projects } from '@/components/projects';
@@ -21,6 +22,9 @@ export default function HomePage() {
             <a href="#projects" className="transition hover:text-red-500">
               Projetos
             </a>
+            <a href="#contact" className="transition hover:text-red-500">
+              Contato
+            </a>
           </div>
         </nav>
       </header>
@@ -29,6 +33,7 @@ export default function HomePage() {
       <Skills />
       <Timeline />
       <Projects />
+      <Contact />
       <Footer />
     </main>
   );
