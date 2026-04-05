@@ -5,13 +5,14 @@ import { Footer } from '@/components/footer';
 import { Hero } from '@/components/hero';
 import { LanguageToggle } from '@/components/language-toggle';
 import { Projects } from '@/components/projects';
+import { RealCaseStudy } from '@/components/real-case-study';
 import { Skills } from '@/components/skills';
 import { Timeline } from '@/components/timeline';
 import { useLanguage } from '@/components/language-provider';
 
 const navLabels = {
-  pt: { projects: 'Projetos', contact: 'Contato' },
-  en: { projects: 'Projects', contact: 'Contact' }
+  pt: { caseStudy: 'Caso Real', projects: 'Projetos', contact: 'Contato' },
+  en: { caseStudy: 'Real Case', projects: 'Projects', contact: 'Contact' }
 } as const;
 
 export default function HomePage() {
@@ -31,6 +32,9 @@ export default function HomePage() {
             <a href="#timeline" className="transition hover:text-red-500">
               Timeline
             </a>
+            <a href="#case-study" className="transition hover:text-red-500">
+              {copy.caseStudy}
+            </a>
             <a href="#projects" className="transition hover:text-red-500">
               {copy.projects}
             </a>
@@ -45,6 +49,7 @@ export default function HomePage() {
       <Hero />
       <Skills />
       <Timeline />
+      <RealCaseStudy />
       <Projects />
       <Contact />
       <Footer />

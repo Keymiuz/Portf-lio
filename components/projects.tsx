@@ -40,6 +40,7 @@ export function Projects() {
   const { locale } = useLanguage();
   const copy = sectionCopy[locale];
   const { projects } = getPortfolioContent(locale);
+  const visibleProjects = projects.filter((project) => project.id !== 'project-cedro-rosa');
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   return (
@@ -51,7 +52,7 @@ export function Projects() {
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {projects.map((project, index) => (
+          {visibleProjects.map((project, index) => (
             <article
               key={project.id}
               className="flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950/70 backdrop-blur-xl transition duration-300 hover:border-red-600/80"
