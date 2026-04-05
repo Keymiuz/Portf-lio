@@ -148,6 +148,24 @@ export const projects: ProjectItem[] = [
     links: [{ label: 'Abrir demo', href: '/projects/price-alert', kind: 'demo' }]
   },
   {
+    id: 'project-lol-api',
+    title: 'API LOL Matchup Analyzer',
+    summary: 'Aplicação com backend Node.js + Express e frontend Angular para analisar matchups exatos de Top Lane usando a Riot API.',
+    stack: ['Node.js', 'Express', 'Angular', 'Riot API', 'Analytics'],
+    badge: 'portfolio',
+    image: {
+      src: '/projects/lol-api.png',
+      alt: 'Interface do projeto API LOL Matchup Analyzer'
+    },
+    details: [
+      'Consulta a Riot API para localizar a conta, buscar partidas recentes e filtrar apenas matchups exatos na Top Lane.',
+      'Calcula winrate isolado do matchup, gold diff, cs diff e xp diff aos 10 e 15 minutos, risco de gank cedo e resumo de build, runas e combate.',
+      'A arquitetura atual separa backend em Node.js + Express e frontend em Angular, com cache em memória para acelerar consultas repetidas.',
+      'Projeto forte para mostrar integração com API externa, processamento de dados de partidas e tradução dessas métricas em uma interface útil.'
+    ],
+    links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/API-LOL', kind: 'github' }]
+  },
+  {
     id: 'project-rastreador-nf',
     title: 'Rastreador de NF',
     summary: 'Ferramenta voltada ao acompanhamento e organização de notas fiscais, com fluxo orientado à automação.',
