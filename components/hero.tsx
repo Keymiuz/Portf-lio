@@ -28,6 +28,8 @@ const heroCopy = {
 export function Hero() {
   const { locale } = useLanguage();
   const copy = heroCopy[locale];
+  const resumeHref = locale === 'pt' ? '/CV_PT.pdf' : '/CV.pdf';
+  const resumeDownload = locale === 'pt' ? 'Joao-Pedro-CV-PT.pdf' : 'Joao-Pedro-CV-EN.pdf';
 
   return (
     <section className="relative overflow-hidden rounded-3xl border border-zinc-800/80 bg-zinc-950/70 p-6 shadow-2xl shadow-black/40 backdrop-blur-xl md:p-10">
@@ -54,8 +56,8 @@ export function Hero() {
           ))}
 
           <a
-            href="/CV.pdf"
-            download="Joao-Pedro-CV.pdf"
+            href={resumeHref}
+            download={resumeDownload}
             className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-2.5 text-sm font-medium text-white transition duration-300 hover:bg-red-500 hover:shadow-glow"
           >
             <Download className="h-4 w-4" />

@@ -101,6 +101,8 @@ export function Contact() {
   const { locale } = useLanguage();
   const copy = sectionCopy[locale];
   const links = contactLinks[locale];
+  const resumeHref = locale === 'pt' ? '/CV_PT.pdf' : '/CV.pdf';
+  const resumeDownload = locale === 'pt' ? 'Joao-Pedro-CV-PT.pdf' : 'Joao-Pedro-CV-EN.pdf';
   const [copied, setCopied] = useState(false);
 
   async function handleCopyEmail() {
@@ -155,8 +157,8 @@ export function Contact() {
             </button>
 
             <a
-              href="/CV.pdf"
-              download="Joao-Pedro-CV.pdf"
+              href={resumeHref}
+              download={resumeDownload}
               className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/70 px-5 py-3 text-sm text-zinc-100 transition hover:border-red-600 hover:text-red-400"
             >
               <Download className="h-4 w-4" />
