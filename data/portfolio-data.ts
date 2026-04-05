@@ -46,11 +46,13 @@ type PortfolioContent = {
   projects: ProjectItem[];
 };
 
-const skillItems = ['Java', 'Node.js', 'Angular', 'Spring Boot', 'C/C++', 'JavaScript', 'TypeScript', 'Python', 'SQL', 'Shell'];
-
 const portfolioContent: Record<SiteLocale, PortfolioContent> = {
   pt: {
-    skillGroups: [{ title: 'Stack principal', items: skillItems }],
+    skillGroups: [
+      { title: 'Core stack', items: ['Node.js', 'Angular', 'React', 'Spring Boot'] },
+      { title: 'Linguagens', items: ['Java', 'C', 'C++', 'TypeScript', 'JavaScript'] },
+      { title: 'Ferramentas de automação', items: ['Python', 'SQL', 'Shell'] }
+    ],
     spokenLanguages: ['Inglês (C1 - EFSET)', 'Francês (básico)', 'Espanhol (básico)'],
     timelineEntries: [
       {
@@ -202,7 +204,11 @@ const portfolioContent: Record<SiteLocale, PortfolioContent> = {
     ]
   },
   en: {
-    skillGroups: [{ title: 'Core stack', items: skillItems }],
+    skillGroups: [
+      { title: 'Core stack', items: ['Node.js', 'Angular', 'React', 'Spring Boot'] },
+      { title: 'Languages', items: ['Java', 'C', 'C++', 'TypeScript', 'JavaScript'] },
+      { title: 'Automation tools', items: ['Python', 'SQL', 'Shell'] }
+    ],
     spokenLanguages: ['English (C1 - EFSET)', 'French (basic)', 'Spanish (basic)'],
     timelineEntries: [
       {
