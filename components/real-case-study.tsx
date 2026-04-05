@@ -110,64 +110,82 @@ export function RealCaseStudy() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className="overflow-hidden rounded-[2rem] border border-zinc-800/80 bg-zinc-950/80 shadow-2xl shadow-black/40"
       >
-        <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="relative min-h-[380px] overflow-hidden border-b border-zinc-800 lg:min-h-[640px] lg:border-b-0 lg:border-r">
-            <Image
-              src="/projects/cedro-rosa.png"
-              alt="Tela do projeto Cedro Rosa em produção"
-              fill
-              className="object-cover object-center transition duration-700 hover:scale-[1.03]"
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/18 to-transparent" />
+        <div className="border-b border-zinc-800 bg-zinc-900/40 p-4 md:p-6">
+          <div className="relative overflow-hidden rounded-[1.5rem] border border-zinc-800 bg-zinc-950">
+            <div className="relative aspect-[16/10] w-full">
+              <Image
+                src="/projects/cedro-rosa.png"
+                alt="Tela do projeto Cedro Rosa em produção"
+                fill
+                className="object-contain object-top"
+                sizes="(max-width: 1280px) 100vw, 1200px"
+                priority
+              />
+            </div>
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/55 to-transparent p-5 md:p-7">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.28em] text-zinc-300/80">{copy.projectLabel}</p>
+                  <p className="mt-2 text-xl font-semibold text-white md:text-2xl">{copy.projectLabelValue}</p>
+                </div>
 
-            <div className="absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-4 p-6 md:p-8">
-              <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-zinc-300/80">{copy.projectLabel}</p>
-                <p className="mt-2 text-xl font-semibold text-white md:text-2xl">{copy.projectLabelValue}</p>
+                <a
+                  href="https://cedrorosamusica.online/musicas/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
+                >
+                  {copy.cta}
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
               </div>
-
-              <a
-                href="https://cedrorosamusica.online/musicas/"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-zinc-200"
-              >
-                {copy.cta}
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
             </div>
           </div>
+        </div>
 
-          <div className="flex flex-col gap-8 p-6 md:p-8">
-            <div className="flex flex-wrap gap-2">
-              {copy.highlights.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-zinc-700 bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-200"
-                >
-                  {item}
-                </span>
-              ))}
+        <div className="flex flex-col gap-8 p-6 md:p-8">
+          <div className="flex flex-wrap gap-2">
+            {copy.highlights.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-zinc-700 bg-zinc-900/70 px-3 py-1.5 text-xs text-zinc-200"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.26em] text-zinc-500">
+                <Music4 className="h-4 w-4 text-red-400" />
+                {copy.sectionTitles.context}
+              </div>
+              <p className="text-sm leading-7 text-zinc-300">{copy.context}</p>
             </div>
 
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.26em] text-zinc-500">
-                  <Music4 className="h-4 w-4 text-red-400" />
-                  {copy.sectionTitles.context}
-                </div>
-                <p className="text-sm leading-7 text-zinc-300">{copy.context}</p>
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.26em] text-zinc-500">
+                <Sparkles className="h-4 w-4 text-red-400" />
+                {copy.sectionTitles.role}
               </div>
+              <div className="space-y-3">
+                {copy.role.map((item) => (
+                  <p key={item} className="border-l border-zinc-700 pl-4 text-sm leading-7 text-zinc-300">
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </div>
 
+            <div className="grid gap-6 xl:grid-cols-2">
               <div className="space-y-3">
                 <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.26em] text-zinc-500">
-                  <Sparkles className="h-4 w-4 text-red-400" />
-                  {copy.sectionTitles.role}
+                  <Layers3 className="h-4 w-4 text-red-400" />
+                  {copy.sectionTitles.stack}
                 </div>
                 <div className="space-y-3">
-                  {copy.role.map((item) => (
+                  {copy.stack.map((item) => (
                     <p key={item} className="border-l border-zinc-700 pl-4 text-sm leading-7 text-zinc-300">
                       {item}
                     </p>
@@ -175,33 +193,17 @@ export function RealCaseStudy() {
                 </div>
               </div>
 
-              <div className="grid gap-6 xl:grid-cols-2">
-                <div className="space-y-3">
-                  <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.26em] text-zinc-500">
-                    <Layers3 className="h-4 w-4 text-red-400" />
-                    {copy.sectionTitles.stack}
-                  </div>
-                  <div className="space-y-3">
-                    {copy.stack.map((item) => (
-                      <p key={item} className="border-l border-zinc-700 pl-4 text-sm leading-7 text-zinc-300">
-                        {item}
-                      </p>
-                    ))}
-                  </div>
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.26em] text-zinc-500">
+                  <ArrowUpRight className="h-4 w-4 text-red-400" />
+                  {copy.sectionTitles.outcome}
                 </div>
-
                 <div className="space-y-3">
-                  <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.26em] text-zinc-500">
-                    <ArrowUpRight className="h-4 w-4 text-red-400" />
-                    {copy.sectionTitles.outcome}
-                  </div>
-                  <div className="space-y-3">
-                    {copy.outcome.map((item) => (
-                      <p key={item} className="border-l border-zinc-700 pl-4 text-sm leading-7 text-zinc-300">
-                        {item}
-                      </p>
-                    ))}
-                  </div>
+                  {copy.outcome.map((item) => (
+                    <p key={item} className="border-l border-zinc-700 pl-4 text-sm leading-7 text-zinc-300">
+                      {item}
+                    </p>
+                  ))}
                 </div>
               </div>
             </div>
