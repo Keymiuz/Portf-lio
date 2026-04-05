@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Copy, Download, Github, Linkedin, Mail, MessageCircle, Send } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
+import { TiltCard } from '@/components/tilt-card';
 
 const email = 'jpcicolo@gmail.com';
 const whatsappNumber = '5511976468942';
@@ -169,26 +170,27 @@ export function Contact() {
 
         <div className="grid gap-3">
           {links.map(({ href, label, description, icon: Icon, accent }) => (
-            <a
-              key={label}
-              href={href}
-              target={href.startsWith('http') ? '_blank' : undefined}
-              rel={href.startsWith('http') ? 'noreferrer' : undefined}
-              className="group rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 transition duration-300 hover:border-red-600/80"
-            >
-              <div className="flex items-start gap-4">
-                <div
-                  className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${accent} text-white shadow-lg`}
-                >
-                  <Icon className="h-5 w-5" />
-                </div>
+            <TiltCard key={label} maxTilt={7}>
+              <a
+                href={href}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noreferrer' : undefined}
+                className="group block rounded-2xl border border-zinc-800 bg-zinc-950/70 p-4 transition duration-300 hover:border-red-600/80"
+              >
+                <div className="flex items-start gap-4">
+                  <div
+                    className={`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${accent} text-white shadow-lg`}
+                  >
+                    <Icon className="h-5 w-5" />
+                  </div>
 
-                <div className="space-y-1">
-                  <p className="text-sm font-medium text-zinc-100 transition group-hover:text-white">{label}</p>
-                  <p className="text-sm leading-6 text-zinc-400">{description}</p>
+                  <div className="space-y-1">
+                    <p className="text-sm font-medium text-zinc-100 transition group-hover:text-white">{label}</p>
+                    <p className="text-sm leading-6 text-zinc-400">{description}</p>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
+            </TiltCard>
           ))}
         </div>
       </div>

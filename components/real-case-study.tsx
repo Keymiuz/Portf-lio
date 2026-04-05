@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Layers3, Music4, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/components/language-provider';
+import { TiltCard } from '@/components/tilt-card';
 
 const caseStudyCopy = {
   pt: {
@@ -103,13 +104,14 @@ export function RealCaseStudy() {
         <p className="mt-4 text-sm leading-7 text-zinc-400">{copy.description}</p>
       </div>
 
-      <motion.article
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="overflow-hidden rounded-[2rem] border border-zinc-800/80 bg-zinc-950/80 shadow-2xl shadow-black/40"
-      >
+      <TiltCard maxTilt={5}>
+        <motion.article
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="overflow-hidden rounded-[2rem] border border-zinc-800/80 bg-zinc-950/80 shadow-2xl shadow-black/40"
+        >
         <div className="border-b border-zinc-800 bg-zinc-900/40 p-4 md:p-6">
           <div className="relative overflow-hidden rounded-[1.5rem] border border-zinc-800 bg-zinc-950">
             <div className="relative aspect-[16/10] w-full">
@@ -209,7 +211,8 @@ export function RealCaseStudy() {
             </div>
           </div>
         </div>
-      </motion.article>
+        </motion.article>
+      </TiltCard>
     </section>
   );
 }
