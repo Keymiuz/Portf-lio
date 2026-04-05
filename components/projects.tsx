@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ExternalLink, Github, SlidersHorizontal, X } from 'lucide-react';
-import { projects, type ProjectItem, type ProjectLink } from '@/data/portfolio-data';
+import { useLanguage } from '@/components/language-provider';
+import { getPortfolioContent, type ProjectItem, type ProjectLink } from '@/data/portfolio-data';
 
 function getLinkIcon(kind: ProjectLink['kind']) {
   return kind === 'github' ? Github : ExternalLink;
@@ -18,17 +19,35 @@ function isExternalLink(href: string) {
   return /^https?:\/\//.test(href);
 }
 
+const sectionCopy = {
+  pt: {
+    title: 'Projetos em Destaque',
+    description: 'Seleção de projetos com contexto técnico, impacto prático e links para demonstração ou repositório.',
+    details: 'Ver detalhes',
+    stack: 'Stack',
+    links: 'Links'
+  },
+  en: {
+    title: 'Featured Projects',
+    description: 'Selected projects with technical context, practical impact and links to demos or repositories.',
+    details: 'View details',
+    stack: 'Stack',
+    links: 'Links'
+  }
+} as const;
+
 export function Projects() {
+  const { locale } = useLanguage();
+  const copy = sectionCopy[locale];
+  const { projects } = getPortfolioContent(locale);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
   return (
     <>
       <section id="projects" className="space-y-6">
         <div>
-          <h2 className="text-2xl font-semibold text-white">Projetos em Destaque</h2>
-          <p className="text-sm text-zinc-400">
-            Seleção de projetos com contexto técnico, impacto prático e links para demonstração ou repositório.
-          </p>
+          <h2 className="text-2xl font-semibold text-white">{copy.title}</h2>
+          <p className="text-sm text-zinc-400">{copy.description}</p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -52,11 +71,11 @@ export function Projects() {
               <div className="flex h-full flex-col p-5">
                 <div className="mb-4 flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">Projeto {String(index + 1).padStart(2, '0')}</p>
+                    <p className="text-xs uppercase tracking-[0.25em] text-zinc-500">Project {String(index + 1).padStart(2, '0')}</p>
                     <h3 className="mt-2 text-xl font-semibold text-zinc-100">{project.title}</h3>
                   </div>
 
-                  {project.badge === 'projeto real' ? (
+                  {project.badge === 'projeto real' || project.badge === 'real project' ? (
                     <a
                       href={project.links.find((link) => link.kind === 'live')?.href ?? '#'}
                       target="_blank"
@@ -125,7 +144,7 @@ export function Projects() {
                     className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/70 px-4 py-2 text-sm text-zinc-100 transition hover:border-red-600 hover:text-red-400"
                   >
                     <SlidersHorizontal className="h-4 w-4" />
-                    Ver detalhes
+                    {copy.details}
                   </button>
                 </div>
               </div>
@@ -162,7 +181,7 @@ export function Projects() {
                   type="button"
                   onClick={() => setSelectedProject(null)}
                   className="rounded-xl border border-zinc-800 bg-zinc-900 p-2 text-zinc-400 transition hover:border-red-600 hover:text-red-400"
-                  aria-label="Fechar detalhes do projeto"
+                  aria-label="Close project details"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -194,7 +213,7 @@ export function Projects() {
 
                 <div className="space-y-5">
                   <div className="rounded-2xl border border-zinc-800 bg-zinc-900/55 p-4">
-                    <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Stack</p>
+                    <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">{copy.stack}</p>
                     <div className="mt-3 flex flex-wrap gap-2">
                       {selectedProject.stack.map((item) => (
                         <span key={item} className="rounded-full border border-zinc-700 px-3 py-1 text-xs text-zinc-300">
@@ -205,7 +224,7 @@ export function Projects() {
                   </div>
 
                   <div className="rounded-2xl border border-zinc-800 bg-zinc-900/55 p-4">
-                    <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Links</p>
+                    <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">{copy.links}</p>
                     <div className="mt-3 flex flex-wrap gap-3">
                       {selectedProject.links.map((link) => {
                         const Icon = getLinkIcon(link.kind);

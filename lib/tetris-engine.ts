@@ -316,7 +316,7 @@ function calculatePlacementScore(params: {
 
   return {
     points: totalPoints,
-    label: label || 'Peca travada',
+    label: label || 'Piece locked',
     nextBackToBack
   };
 }
@@ -421,7 +421,7 @@ export function createInitialGameState(): GameState {
     gameOver: false,
     backToBack: false,
     lastAction: 'spawn',
-    status: 'Pronto'
+    status: 'Ready'
   };
 }
 
@@ -540,7 +540,7 @@ export function holdPiece(state: GameState): GameState {
     queue: nextQueue,
     canHold: false,
     lastAction: 'spawn',
-    status: state.hold ? 'Troca realizada' : 'Hold'
+    status: state.hold ? 'Swap complete' : 'Hold placed'
   };
 }
 
@@ -550,7 +550,7 @@ export function togglePause(state: GameState): GameState {
   return {
     ...state,
     paused: !state.paused,
-    status: state.paused ? 'Jogo retomado' : 'Pausado'
+    status: state.paused ? 'Game resumed' : 'Paused'
   };
 }
 

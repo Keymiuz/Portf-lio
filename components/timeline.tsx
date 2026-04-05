@@ -3,23 +3,46 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BriefcaseBusiness, ChevronDown, GraduationCap } from 'lucide-react';
-import { timelineEntries, type TimelineKind } from '@/data/portfolio-data';
+import { useLanguage } from '@/components/language-provider';
+import { getPortfolioContent, type TimelineKind } from '@/data/portfolio-data';
 
-const kindConfig: Record<TimelineKind, { label: string; icon: React.ComponentType<{ className?: string }> }> = {
-  experience: { label: 'Experiência', icon: BriefcaseBusiness },
-  education: { label: 'Formação', icon: GraduationCap }
-};
+const kindConfig = {
+  pt: {
+    experience: { label: 'Experiência', icon: BriefcaseBusiness },
+    education: { label: 'Formação', icon: GraduationCap }
+  },
+  en: {
+    experience: { label: 'Experience', icon: BriefcaseBusiness },
+    education: { label: 'Education', icon: GraduationCap }
+  }
+} satisfies Record<'pt' | 'en', Record<TimelineKind, { label: string; icon: React.ComponentType<{ className?: string }> }>>;
+
+const sectionCopy = {
+  pt: {
+    title: 'Formação & Experiência',
+    description: 'Visão objetiva da minha trajetória acadêmica e profissional, com contexto, escopo e resultados relevantes.',
+    expand: 'Clique para ver detalhes',
+    collapse: 'Clique para recolher'
+  },
+  en: {
+    title: 'Education & Experience',
+    description: 'A concise view of my academic and professional journey, with context, scope and relevant outcomes.',
+    expand: 'Click to view details',
+    collapse: 'Click to collapse'
+  }
+} as const;
 
 export function Timeline() {
+  const { locale } = useLanguage();
+  const copy = sectionCopy[locale];
+  const { timelineEntries } = getPortfolioContent(locale);
   const [openItemId, setOpenItemId] = useState<string>(timelineEntries[0]?.id ?? '');
 
   return (
     <section id="timeline" className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-white">Formação & Experiência</h2>
-        <p className="text-sm text-zinc-400">
-          Visão objetiva da minha trajetória acadêmica e profissional, com contexto, escopo e resultados relevantes.
-        </p>
+        <h2 className="text-2xl font-semibold text-white">{copy.title}</h2>
+        <p className="text-sm text-zinc-400">{copy.description}</p>
       </div>
 
       <div className="relative">
@@ -27,7 +50,7 @@ export function Timeline() {
 
         <div className="space-y-6">
           {timelineEntries.map((item, index) => {
-            const Icon = kindConfig[item.kind].icon;
+            const Icon = kindConfig[locale][item.kind].icon;
             const alignRight = index % 2 !== 0;
             const isOpen = openItemId === item.id;
 
@@ -54,7 +77,7 @@ export function Timeline() {
                     <div>
                       <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-zinc-500">
                         <Icon className="h-4 w-4" />
-                        {kindConfig[item.kind].label}
+                        {kindConfig[locale][item.kind].label}
                       </div>
 
                       <p className="text-sm text-red-500">{item.period}</p>
@@ -80,9 +103,7 @@ export function Timeline() {
                     ))}
                   </div>
 
-                  <p className="mt-4 text-xs uppercase tracking-[0.2em] text-zinc-500">
-                    {isOpen ? 'Clique para recolher' : 'Clique para ver detalhes'}
-                  </p>
+                  <p className="mt-4 text-xs uppercase tracking-[0.2em] text-zinc-500">{isOpen ? copy.collapse : copy.expand}</p>
 
                   <AnimatePresence initial={false}>
                     {isOpen ? (

@@ -2,44 +2,105 @@
 
 import { useState } from 'react';
 import { Copy, Download, Github, Linkedin, Mail, MessageCircle, Send } from 'lucide-react';
+import { useLanguage } from '@/components/language-provider';
 
 const email = 'jpcicolo@gmail.com';
 const whatsappNumber = '5511976468942';
 const whatsappHref = `https://wa.me/${whatsappNumber}`;
 const whatsappLabel = '(11) 97646-8942';
 
-const contactLinks = [
-  {
-    href: whatsappHref,
-    label: 'Abrir WhatsApp',
-    description: `Canal rápido para conversas diretas sobre vagas, freelas e oportunidades no número ${whatsappLabel}.`,
-    icon: MessageCircle,
-    accent: 'from-emerald-500 to-lime-400'
+const contactLinks = {
+  pt: [
+    {
+      href: whatsappHref,
+      label: 'Abrir WhatsApp',
+      description: `Canal rápido para conversas diretas sobre vagas, freelas e oportunidades no número ${whatsappLabel}.`,
+      icon: MessageCircle,
+      accent: 'from-emerald-500 to-lime-400'
+    },
+    {
+      href: `mailto:${email}`,
+      label: 'Enviar email',
+      description: 'Contato ideal para propostas, processos seletivos e conversas mais estruturadas.',
+      icon: Mail,
+      accent: 'from-red-600 to-orange-400'
+    },
+    {
+      href: 'https://www.linkedin.com/in/keymius/',
+      label: 'Abrir LinkedIn',
+      description: 'Perfil profissional com trajetória, experiências e posicionamento de carreira.',
+      icon: Linkedin,
+      accent: 'from-sky-500 to-cyan-400'
+    },
+    {
+      href: 'https://github.com/Keymiuz',
+      label: 'Abrir GitHub',
+      description: 'Repositórios públicos com projetos, estudos e aplicações desenvolvidas por mim.',
+      icon: Github,
+      accent: 'from-zinc-200 to-zinc-500'
+    }
+  ],
+  en: [
+    {
+      href: whatsappHref,
+      label: 'Open WhatsApp',
+      description: `Fast channel for direct conversations about roles, freelance work and opportunities at ${whatsappLabel}.`,
+      icon: MessageCircle,
+      accent: 'from-emerald-500 to-lime-400'
+    },
+    {
+      href: `mailto:${email}`,
+      label: 'Send email',
+      description: 'Best channel for proposals, hiring processes and more structured conversations.',
+      icon: Mail,
+      accent: 'from-red-600 to-orange-400'
+    },
+    {
+      href: 'https://www.linkedin.com/in/keymius/',
+      label: 'Open LinkedIn',
+      description: 'Professional profile with background, experience and career positioning.',
+      icon: Linkedin,
+      accent: 'from-sky-500 to-cyan-400'
+    },
+    {
+      href: 'https://github.com/Keymiuz',
+      label: 'Open GitHub',
+      description: 'Public repositories with projects, studies and applications built by me.',
+      icon: Github,
+      accent: 'from-zinc-200 to-zinc-500'
+    }
+  ]
+} as const;
+
+const sectionCopy = {
+  pt: {
+    eyebrow: 'Contato rápido',
+    title: 'Aberto a oportunidades, projetos e conversas com foco em resultado.',
+    description:
+      'Esta seção foi pensada para facilitar o contato com recrutadores, líderes técnicos e clientes. Escolha o canal mais conveniente e seguimos a conversa por lá.',
+    whatsapp: 'Chamar no WhatsApp',
+    email: 'Enviar email',
+    copyEmail: 'Copiar email',
+    copiedEmail: 'Email copiado',
+    resume: 'Baixar currículo'
   },
-  {
-    href: `mailto:${email}`,
-    label: 'Enviar email',
-    description: 'Contato ideal para propostas, processos seletivos e conversas mais estruturadas.',
-    icon: Mail,
-    accent: 'from-red-600 to-orange-400'
-  },
-  {
-    href: 'https://www.linkedin.com/in/keymius/',
-    label: 'Abrir LinkedIn',
-    description: 'Perfil profissional com trajetória, experiências e posicionamento de carreira.',
-    icon: Linkedin,
-    accent: 'from-sky-500 to-cyan-400'
-  },
-  {
-    href: 'https://github.com/Keymiuz',
-    label: 'Abrir GitHub',
-    description: 'Repositórios públicos com projetos, estudos e aplicações desenvolvidas por mim.',
-    icon: Github,
-    accent: 'from-zinc-200 to-zinc-500'
+  en: {
+    eyebrow: 'Quick contact',
+    title: 'Open to opportunities, projects and conversations focused on results.',
+    description:
+      'This section is designed to make it easy for recruiters, engineering leaders and clients to reach out through the most convenient channel.',
+    whatsapp: 'Message on WhatsApp',
+    email: 'Send email',
+    copyEmail: 'Copy email',
+    copiedEmail: 'Email copied',
+    resume: 'Download resume'
   }
-];
+} as const;
 
 export function Contact() {
+  const { locale } = useLanguage();
+  const copy = sectionCopy[locale];
+  const links = contactLinks[locale];
   const [copied, setCopied] = useState(false);
 
   async function handleCopyEmail() {
@@ -61,14 +122,9 @@ export function Contact() {
 
       <div className="relative grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-5">
-          <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">Contato rápido</p>
-          <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-white md:text-5xl">
-            Aberto a oportunidades, projetos e conversas com foco em resultado.
-          </h2>
-          <p className="max-w-2xl text-base leading-7 text-zinc-300">
-            Esta seção foi pensada para facilitar o contato com recrutadores, líderes técnicos e clientes. Escolha o canal
-            mais conveniente e seguimos a conversa por lá.
-          </p>
+          <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">{copy.eyebrow}</p>
+          <h2 className="max-w-xl text-3xl font-semibold tracking-tight text-white md:text-5xl">{copy.title}</h2>
+          <p className="max-w-2xl text-base leading-7 text-zinc-300">{copy.description}</p>
 
           <div className="flex flex-wrap gap-3">
             <a
@@ -78,7 +134,7 @@ export function Contact() {
               className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-3 text-sm font-medium text-zinc-950 transition hover:bg-emerald-400"
             >
               <MessageCircle className="h-4 w-4" />
-              Chamar no WhatsApp
+              {copy.whatsapp}
             </a>
 
             <a
@@ -86,7 +142,7 @@ export function Contact() {
               className="inline-flex items-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-red-500"
             >
               <Send className="h-4 w-4" />
-              Enviar email
+              {copy.email}
             </a>
 
             <button
@@ -95,7 +151,7 @@ export function Contact() {
               className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/70 px-5 py-3 text-sm text-zinc-100 transition hover:border-red-600 hover:text-red-400"
             >
               <Copy className="h-4 w-4" />
-              {copied ? 'Email copiado' : 'Copiar email'}
+              {copied ? copy.copiedEmail : copy.copyEmail}
             </button>
 
             <a
@@ -104,13 +160,13 @@ export function Contact() {
               className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 bg-zinc-900/70 px-5 py-3 text-sm text-zinc-100 transition hover:border-red-600 hover:text-red-400"
             >
               <Download className="h-4 w-4" />
-              Baixar currículo
+              {copy.resume}
             </a>
           </div>
         </div>
 
         <div className="grid gap-3">
-          {contactLinks.map(({ href, label, description, icon: Icon, accent }) => (
+          {links.map(({ href, label, description, icon: Icon, accent }) => (
             <a
               key={label}
               href={href}

@@ -13,6 +13,7 @@ import {
   RotateCw,
   Undo2
 } from 'lucide-react';
+import { useLanguage } from '@/components/language-provider';
 import {
   BOARD_HEIGHT,
   BOARD_WIDTH,
@@ -33,6 +34,123 @@ import {
   tickGame,
   togglePause
 } from '@/lib/tetris-engine';
+
+const copy = {
+  pt: {
+    eyebrow: 'Demo jogável',
+    title: 'Tetris',
+    description:
+      'Layout compacto, foco em teclado e visual mais contemporâneo. Hold em C, hard drop em Espaço e pausa em P.',
+    back: 'Voltar ao portfólio',
+    hold: 'Hold',
+    score: 'Pontuação',
+    level: 'Nível',
+    lines: 'Linhas',
+    next: 'Próximas',
+    status: 'Status',
+    controls: 'Controles',
+    actions: 'Ações',
+    scoring: 'Pontuação',
+    active: 'ativo',
+    inactive: 'inativo',
+    gameOver: 'Fim de jogo',
+    paused: 'Pausado',
+    playAgain: 'Vamos de outra?',
+    gamePaused: 'Jogo pausado',
+    restartMatch: 'Reiniciar partida',
+    resumeGame: 'Retomar jogo',
+    controlsText:
+      'Setas ou A/D/S, Espaço para hard drop, Z/Q e X para girar, C para hold e P para pausar.',
+    left: 'Esq.',
+    right: 'Dir.',
+    soft: 'Soft',
+    drop: 'Drop',
+    ccw: 'Anti',
+    cw: 'Hora',
+    restart: 'Reiniciar',
+    play: 'Play',
+    pause: 'Pause',
+    scoringRows: [
+      'Single 100 x nível',
+      'Double 300 x nível',
+      'Triple 500 x nível',
+      'Tetris 800 x nível',
+      'T-Spin 400 x nível',
+      'T-Spin Double 1200 x nível',
+      'T-Spin Triple 1600 x nível',
+      'Soft drop +1 por linha',
+      'Hard drop +2 por linha',
+      'All Clear +2000 x nível',
+      'B2B x1.5'
+    ],
+    statuses: {
+      Ready: 'Pronto',
+      'Piece locked': 'Peça travada',
+      'Hold placed': 'Hold',
+      'Swap complete': 'Troca realizada',
+      Paused: 'Pausado',
+      'Game resumed': 'Jogo retomado',
+      'Game over': 'Fim de jogo'
+    }
+  },
+  en: {
+    eyebrow: 'Playable demo',
+    title: 'Tetris',
+    description:
+      'Compact layout, keyboard-first controls, and a cleaner modern interface. Hold on C, hard drop on Space, and pause on P.',
+    back: 'Back to portfolio',
+    hold: 'Hold',
+    score: 'Score',
+    level: 'Level',
+    lines: 'Lines',
+    next: 'Next',
+    status: 'Status',
+    controls: 'Controls',
+    actions: 'Actions',
+    scoring: 'Scoring',
+    active: 'active',
+    inactive: 'inactive',
+    gameOver: 'Game over',
+    paused: 'Paused',
+    playAgain: 'Play again?',
+    gamePaused: 'Game paused',
+    restartMatch: 'Restart game',
+    resumeGame: 'Resume game',
+    controlsText:
+      'Arrow keys or A/D/S, Space for hard drop, Z/Q and X to rotate, C for hold, and P to pause.',
+    left: 'Left',
+    right: 'Right',
+    soft: 'Soft',
+    drop: 'Drop',
+    ccw: 'CCW',
+    cw: 'CW',
+    restart: 'Restart',
+    play: 'Play',
+    pause: 'Pause',
+    scoringRows: [
+      'Single 100 x level',
+      'Double 300 x level',
+      'Triple 500 x level',
+      'Tetris 800 x level',
+      'T-Spin 400 x level',
+      'T-Spin Double 1200 x level',
+      'T-Spin Triple 1600 x level',
+      'Soft drop +1 per row',
+      'Hard drop +2 per row',
+      'All Clear +2000 x level',
+      'B2B x1.5'
+    ],
+    statuses: {
+      Ready: 'Ready',
+      'Piece locked': 'Piece locked',
+      'Hold placed': 'Hold',
+      'Swap complete': 'Swap complete',
+      Paused: 'Paused',
+      'Game resumed': 'Game resumed',
+      'Game over': 'Game over'
+    }
+  }
+} as const;
 
 function MiniPreview({ type, title }: { type: PieceType | null; title: string }) {
   return (
@@ -93,6 +211,8 @@ function ControlButton({
 }
 
 export function TetrisGame() {
+  const { locale } = useLanguage();
+  const t = copy[locale];
   const [game, setGame] = useState(createInitialGameState);
 
   useEffect(() => {
@@ -164,6 +284,7 @@ export function TetrisGame() {
   const activeCells = getPieceCells(game.active);
   const ghostY = getGhostY(game);
   const ghostCells = getPieceCells({ ...game.active, y: ghostY });
+  const translatedStatus = t.statuses[game.status as keyof typeof t.statuses] ?? game.status;
 
   const boardCells = Array.from({ length: BOARD_HEIGHT * BOARD_WIDTH }, (_, index) => {
     const row = Math.floor(index / BOARD_WIDTH);
@@ -190,11 +311,9 @@ export function TetrisGame() {
       <div className="relative flex h-full flex-col gap-4">
         <div className="flex flex-col justify-between gap-3 lg:flex-row lg:items-center">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.32em] text-cyan-300/70">Playable demo</p>
-            <h1 className="mt-2 text-2xl font-semibold tracking-tight text-white md:text-3xl">Tetris</h1>
-            <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-              Layout mais compacto, foco em teclado e visual mais contemporâneo. Hold em `C`, hard drop em `Espaço` e pausa em `P`.
-            </p>
+            <p className="text-[11px] uppercase tracking-[0.32em] text-cyan-300/70">{t.eyebrow}</p>
+            <h1 className="mt-2 text-2xl font-semibold tracking-tight text-white md:text-3xl">{t.title}</h1>
+            <p className="mt-2 max-w-2xl text-sm text-zinc-400">{t.description}</p>
           </div>
 
           <Link
@@ -202,17 +321,17 @@ export function TetrisGame() {
             className="inline-flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-zinc-200 transition hover:border-white/20 hover:bg-white/10"
           >
             <ArrowLeft className="h-4 w-4" />
-            Voltar ao portfólio
+            {t.back}
           </Link>
         </div>
 
         <div className="grid min-h-0 flex-1 gap-4 xl:grid-cols-[11rem_minmax(17rem,20rem)_11rem] xl:items-stretch xl:justify-center">
           <div className="grid auto-rows-min gap-3 xl:content-start">
-            <MiniPreview title="Hold" type={game.hold} />
+            <MiniPreview title={t.hold} type={game.hold} />
             <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
-              <StatPanel label="Score" value={game.score} />
-              <StatPanel label="Level" value={game.level} />
-              <StatPanel label="Lines" value={game.lines} />
+              <StatPanel label={t.score} value={game.score} />
+              <StatPanel label={t.level} value={game.level} />
+              <StatPanel label={t.lines} value={game.lines} />
             </div>
           </div>
 
@@ -249,14 +368,16 @@ export function TetrisGame() {
                 {(game.paused || game.gameOver) && (
                   <div className="absolute inset-0 flex items-center justify-center rounded-[1.2rem] bg-black/72">
                     <div className="rounded-3xl border border-white/10 bg-zinc-950/95 px-7 py-6 text-center shadow-2xl">
-                      <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">{game.gameOver ? 'Fim de jogo' : 'Pausado'}</p>
-                      <p className="mt-3 text-xl font-semibold text-white">{game.gameOver ? 'Bora mais uma?' : 'Jogo pausado'}</p>
+                      <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">
+                        {game.gameOver ? t.gameOver : t.paused}
+                      </p>
+                      <p className="mt-3 text-xl font-semibold text-white">{game.gameOver ? t.playAgain : t.gamePaused}</p>
                       <button
                         type="button"
                         onClick={() => setGame(game.gameOver ? restartGame() : togglePause(game))}
                         className="mt-5 rounded-2xl bg-red-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-red-500"
                       >
-                        {game.gameOver ? 'Reiniciar partida' : 'Retomar jogo'}
+                        {game.gameOver ? t.restartMatch : t.resumeGame}
                       </button>
                     </div>
                   </div>
@@ -266,25 +387,23 @@ export function TetrisGame() {
 
             <div className="grid gap-3 rounded-[1.5rem] border border-white/10 bg-white/5 p-3 text-sm text-zinc-300 backdrop-blur-xl md:grid-cols-2">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Status</p>
-                <p className="mt-2 text-base font-semibold text-white">{game.status}</p>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">{t.status}</p>
+                <p className="mt-2 text-base font-semibold text-white">{translatedStatus}</p>
                 <p className="mt-2 text-zinc-400">
-                  B2B: <span className="font-medium text-zinc-200">{game.backToBack ? 'ativo' : 'inativo'}</span>
+                  B2B: <span className="font-medium text-zinc-200">{game.backToBack ? t.active : t.inactive}</span>
                 </p>
               </div>
 
               <div>
-                <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Controles</p>
-                <p className="mt-2 leading-6 text-zinc-400">
-                  Setas ou `A/D/S`, `Espaço` para hard drop, `Z/Q` e `X` para girar, `C` para hold e `P` para pausar.
-                </p>
+                <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">{t.controls}</p>
+                <p className="mt-2 leading-6 text-zinc-400">{t.controlsText}</p>
               </div>
             </div>
           </div>
 
           <div className="grid min-h-0 auto-rows-min gap-3 xl:content-start">
             <div className="rounded-3xl border border-white/10 bg-white/5 p-3 backdrop-blur-md">
-              <p className="text-center text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-400">Next</p>
+              <p className="text-center text-[11px] font-medium uppercase tracking-[0.24em] text-zinc-400">{t.next}</p>
               <div className="mt-3 space-y-2">
                 {game.queue.slice(0, NEXT_QUEUE_SIZE).map((pieceType, index) => (
                   <div key={`${pieceType}-${index}`} className="rounded-2xl bg-black/40 p-2">
@@ -313,17 +432,17 @@ export function TetrisGame() {
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-3 backdrop-blur-md">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Ações</p>
+              <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">{t.actions}</p>
               <div className="mt-3 grid grid-cols-2 gap-2">
-                <ControlButton label="Esq." onClick={() => setGame((current) => moveHorizontally(current, -1))} icon={<ArrowLeft className="h-4 w-4" />} />
-                <ControlButton label="Dir." onClick={() => setGame((current) => moveHorizontally(current, 1))} icon={<ArrowRight className="h-4 w-4" />} />
-                <ControlButton label="Soft" onClick={() => setGame((current) => softDrop(current))} icon={<ArrowDown className="h-4 w-4" />} />
-                <ControlButton label="Drop" onClick={() => setGame((current) => hardDrop(current))} icon={<ArrowUp className="h-4 w-4" />} />
-                <ControlButton label="Anti" onClick={() => setGame((current) => rotatePiece(current, -1))} icon={<RotateCcw className="h-4 w-4" />} />
-                <ControlButton label="Hora" onClick={() => setGame((current) => rotatePiece(current, 1))} icon={<RotateCw className="h-4 w-4" />} />
-                <ControlButton label="Hold" onClick={() => setGame((current) => holdPiece(current))} icon={<Undo2 className="h-4 w-4" />} />
+                <ControlButton label={t.left} onClick={() => setGame((current) => moveHorizontally(current, -1))} icon={<ArrowLeft className="h-4 w-4" />} />
+                <ControlButton label={t.right} onClick={() => setGame((current) => moveHorizontally(current, 1))} icon={<ArrowRight className="h-4 w-4" />} />
+                <ControlButton label={t.soft} onClick={() => setGame((current) => softDrop(current))} icon={<ArrowDown className="h-4 w-4" />} />
+                <ControlButton label={t.drop} onClick={() => setGame((current) => hardDrop(current))} icon={<ArrowUp className="h-4 w-4" />} />
+                <ControlButton label={t.ccw} onClick={() => setGame((current) => rotatePiece(current, -1))} icon={<RotateCcw className="h-4 w-4" />} />
+                <ControlButton label={t.cw} onClick={() => setGame((current) => rotatePiece(current, 1))} icon={<RotateCw className="h-4 w-4" />} />
+                <ControlButton label={t.hold} onClick={() => setGame((current) => holdPiece(current))} icon={<Undo2 className="h-4 w-4" />} />
                 <ControlButton
-                  label={game.paused ? 'Play' : 'Pause'}
+                  label={game.paused ? t.play : t.pause}
                   onClick={() => setGame((current) => togglePause(current))}
                   icon={game.paused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
                 />
@@ -334,24 +453,16 @@ export function TetrisGame() {
                 className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-red-500/30 bg-red-500/10 px-3 py-2 text-xs text-red-200 transition hover:border-red-500/60 hover:bg-red-500/20"
               >
                 <Undo2 className="h-4 w-4" />
-                Reiniciar
+                {t.restart}
               </button>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-3 text-xs leading-5 text-zinc-400 backdrop-blur-md">
-              <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">Pontuação</p>
+              <p className="text-[11px] uppercase tracking-[0.24em] text-zinc-500">{t.scoring}</p>
               <ul className="mt-2 space-y-1">
-                <li>Single 100 x nível</li>
-                <li>Double 300 x nível</li>
-                <li>Triple 500 x nível</li>
-                <li>Tetris 800 x nível</li>
-                <li>T-Spin 400 x nível</li>
-                <li>T-Spin Double 1200 x nível</li>
-                <li>T-Spin Triple 1600 x nível</li>
-                <li>Soft drop +1 por linha</li>
-                <li>Hard drop +2 por linha</li>
-                <li>All Clear +2000 x nível</li>
-                <li>B2B x1.5</li>
+                {t.scoringRows.map((row) => (
+                  <li key={row}>{row}</li>
+                ))}
               </ul>
             </div>
           </div>
