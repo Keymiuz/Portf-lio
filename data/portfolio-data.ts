@@ -49,8 +49,8 @@ type PortfolioContent = {
 const portfolioContent: Record<SiteLocale, PortfolioContent> = {
   pt: {
     skillGroups: [
-      { title: 'Core stack', items: ['Node.js', 'Angular', 'React', 'Spring Boot'] },
-      { title: 'Linguagens', items: ['Java', 'C', 'C++', 'TypeScript', 'JavaScript'] },
+      { title: 'Core stack', items: ['Node.js', 'Angular', 'React', 'Java', 'Spring Boot'] },
+      { title: 'Linguagens', items: ['C', 'C++', 'TypeScript / JavaScript'] },
       { title: 'Ferramentas de automação', items: ['Python', 'SQL', 'Shell'] }
     ],
     spokenLanguages: ['Inglês (C1 - EFSET)', 'Francês (básico)', 'Espanhol (básico)'],
@@ -205,8 +205,8 @@ const portfolioContent: Record<SiteLocale, PortfolioContent> = {
   },
   en: {
     skillGroups: [
-      { title: 'Core stack', items: ['Node.js', 'Angular', 'React', 'Spring Boot'] },
-      { title: 'Languages', items: ['Java', 'C', 'C++', 'TypeScript', 'JavaScript'] },
+      { title: 'Core stack', items: ['Node.js', 'Angular', 'React', 'Java', 'Spring Boot'] },
+      { title: 'Languages', items: ['C', 'C++', 'TypeScript / JavaScript'] },
       { title: 'Automation tools', items: ['Python', 'SQL', 'Shell'] }
     ],
     spokenLanguages: ['English (C1 - EFSET)', 'French (basic)', 'Spanish (basic)'],
