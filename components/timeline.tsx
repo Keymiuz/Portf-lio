@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BriefcaseBusiness, ChevronDown, GraduationCap } from 'lucide-react';
@@ -126,6 +127,25 @@ export function Timeline() {
                                 </li>
                               ))}
                             </ul>
+
+                            {item.highlight ? (
+                              <div className="mt-5 overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/55">
+                                <div className="relative aspect-[16/9] w-full border-b border-zinc-800 bg-zinc-950/80">
+                                  <Image
+                                    src={item.highlight.image.src}
+                                    alt={item.highlight.image.alt}
+                                    fill
+                                    className="object-contain p-4"
+                                    sizes="(max-width: 768px) 100vw, 560px"
+                                  />
+                                </div>
+
+                                <div className="space-y-2 p-4">
+                                  <p className="text-sm font-semibold text-zinc-100">{item.highlight.title}</p>
+                                  <p className="text-sm leading-6 text-zinc-400">{item.highlight.description}</p>
+                                </div>
+                              </div>
+                            ) : null}
                           </div>
                         </motion.div>
                       ) : null}

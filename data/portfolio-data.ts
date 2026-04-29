@@ -12,6 +12,14 @@ export type TimelineEntry = {
   summary: string;
   tags: string[];
   bullets: string[];
+  highlight?: {
+    title: string;
+    description: string;
+    image: {
+      src: string;
+      alt: string;
+    };
+  };
 };
 
 export type SkillGroup = {
@@ -68,7 +76,16 @@ const portfolioContent: Record<SiteLocale, PortfolioContent> = {
           'Formação superior em Análise e Desenvolvimento de Sistemas.',
           'Base acadêmica em programação orientada a objetos, estruturas de dados, banco de dados e arquitetura de software.',
           'Contato contínuo com projetos práticos e fundamentos aplicados à engenharia de produto.'
-        ]
+        ],
+        highlight: {
+          title: 'Palestra certificada em IA aplicada',
+          description:
+            'Apresentei uma palestra sobre comparações de métodos de aprendizado não supervisionado para detecção de fraude em notas fiscais, experiência que me rendeu certificado pelo congresso da Unipaulistana.',
+          image: {
+            src: '/projects/unipaulistana-certificate.png',
+            alt: 'Certificado da palestra sobre métodos de aprendizado não supervisionado para detecção de fraude em notas fiscais'
+          }
+        }
       },
       {
         id: 'experience-music-go',
@@ -224,7 +241,16 @@ const portfolioContent: Record<SiteLocale, PortfolioContent> = {
           'Undergraduate degree in Systems Analysis and Development.',
           'Academic foundation in object-oriented programming, data structures, databases and software architecture.',
           'Continuous exposure to hands-on projects and product engineering fundamentals.'
-        ]
+        ],
+        highlight: {
+          title: 'Certified presentation on applied AI',
+          description:
+            'I delivered a presentation comparing unsupervised learning methods for invoice fraud detection, an academic talk that also earned me an institutional certificate at the Unipaulistana conference.',
+          image: {
+            src: '/projects/unipaulistana-certificate.png',
+            alt: 'Certificate for the presentation on unsupervised learning methods for invoice fraud detection'
+          }
+        }
       },
       {
         id: 'experience-music-go',
