@@ -178,6 +178,21 @@ const portfolioContent: Record<SiteLocale, PortfolioContent> = {
         links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/API-LOL', kind: 'github' }]
       },
       {
+        id: 'project-taskflow',
+        title: 'TaskFlow',
+        summary: 'Plataforma Kanban full-stack para equipes, estruturada como monorepo com backend Spring Boot e frontend Angular.',
+        stack: ['Spring Boot', 'Angular', 'PostgreSQL', 'Docker', 'WebSockets'],
+        badge: 'portfolio',
+        image: { src: '/projects/taskflow.png', alt: 'Painel do TaskFlow Kanban Board' },
+        details: [
+          'Autenticação JWT segura com suporte a refresh tokens e controle de acesso baseado em cargos (Admin/Membro).',
+          'Comunicação em tempo real via WebSockets (STOMP/SockJS) para atualização dinâmica do quadro Kanban entre usuários.',
+          'Persistência robusta com PostgreSQL estruturada com Spring Data JPA e histórico de registros por logs de auditoria.',
+          'Ambiente local simplificado usando Docker Compose para subir a API Java 21, o app Angular 18 e o banco de dados.'
+        ],
+        links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/TaskFlow', kind: 'github' }]
+      },
+      {
         id: 'project-rastreador-nf',
         title: 'Rastreador de NF',
         summary: 'Ferramenta voltada ao acompanhamento e à organização de notas fiscais, com fluxo orientado à automação.',
@@ -341,6 +356,21 @@ const portfolioContent: Record<SiteLocale, PortfolioContent> = {
           'Strong project to demonstrate external API integration, match data processing and turning metrics into a usable product.'
         ],
         links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/API-LOL', kind: 'github' }]
+      },
+      {
+        id: 'project-taskflow',
+        title: 'TaskFlow',
+        summary: 'Full-stack Kanban platform for teams, built as a monorepo with Spring Boot and Angular.',
+        stack: ['Spring Boot', 'Angular', 'PostgreSQL', 'Docker', 'WebSockets'],
+        badge: 'portfolio',
+        image: { src: '/projects/taskflow.png', alt: 'TaskFlow Kanban board dashboard' },
+        details: [
+          'Secure JWT authentication with refresh token support and role-based access control (Admin/Member).',
+          'Real-time communication using WebSockets (STOMP/SockJS) for dynamic Kanban board updates across users.',
+          'Robust persistence with PostgreSQL integrated via Spring Data JPA and tracking through audit logs.',
+          'Simplified local setup using Docker Compose to spin up the Java 21 API, Angular 18 app, and database.'
+        ],
+        links: [{ label: 'GitHub', href: 'https://github.com/Keymiuz/TaskFlow', kind: 'github' }]
       },
       {
         id: 'project-rastreador-nf',
